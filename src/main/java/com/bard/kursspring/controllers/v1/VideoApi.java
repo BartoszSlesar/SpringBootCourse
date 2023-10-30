@@ -3,7 +3,7 @@ package com.bard.kursspring.controllers.v1;
 
 import com.bard.kursspring.model.Video;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +27,9 @@ public class VideoApi {
                 "https://www.youtube.com/watch?v=vKtFeOXCkHM"));
     }
 
-    @GetMapping
+    @GetMapping(produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<List<Video>> getVideos() {
         return new ResponseEntity<>(videoList, HttpStatus.OK);
     }
